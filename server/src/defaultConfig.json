@@ -1,5 +1,5 @@
 {
-  "communicationServicesConnectionString": "endpoint=your_endpoint;accesskey=secret",
+  "communicationServicesConnectionString": "endpoint=https://acs-demo-cfr.switzerland.communication.azure.com/;accesskey=62PkEjp9uEZ5yS4p2Ok1JFz1yzxmMjPHvCBtmzCpKRZNaUX9ujEQJQQJ99AKACULyCpvBmkeAAAAAZCSy0gU",
   "microsoftBookingsUrl": "https://microsoftbookings.azurewebsites.net/?organization=financialservices&UICulture=en-US",
   "chatEnabled": true,
   "screenShareEnabled": true,
