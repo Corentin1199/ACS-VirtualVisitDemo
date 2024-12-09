@@ -3,7 +3,7 @@
 
 import { DefaultButton, ImageFit, PartialTheme, Theme } from '@fluentui/react';
 import { Stack, Text, Image } from '@fluentui/react';
-import imageCalendar from '../../assets/lightCalendarSymbol.png';
+import imageHome from '../../assets/homePageImage.png';
 import {
   btnStackStyles,
   containerMarginTop2rem,
@@ -30,7 +30,7 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
       <Stack horizontalAlign="center" verticalAlign="start" tokens={{ childrenGap: 15 }}>
         <Stack styles={innerContainer}>
           <Stack verticalAlign="center" horizontalAlign="center">
-            <Image imageFit={ImageFit.contain} src={imageCalendar} alt="calendarImage"></Image>
+            <Image imageFit={ImageFit.contain} src={imageHome} alt="homeImage"></Image>
           </Stack>
           <Stack styles={containerMarginTop2rem}>
             <Text styles={lineHeight28px}>Hello,</Text>
