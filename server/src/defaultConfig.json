@@ -3,7 +3,7 @@
   "microsoftBookingsUrl": "https://microsoftbookings.azurewebsites.net/?organization=financialservices&UICulture=en-US",
   "chatEnabled": true,
   "screenShareEnabled": true,
-  "companyName": "Lamna Healthcare",
+  "companyName": "CSS",
   "colorPalette": "#0078d4",
   "waitingTitle": "Thank you for choosing Lamna Healthcare",
   "waitingSubtitle": "Your clinician is joining the meeting",
@@ -14,7 +14,7 @@
       "options": {
         "title": "Tell us how we did",
         "prompt": "How satisfied are you with this virtual appointment's audio and video quality?",
-        "pollType": "likeOrDislike",
+        "pollType": "rating",
         "saveButtonText": "Continue"
       }
     }
