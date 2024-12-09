@@ -14,8 +14,6 @@ import {
   buttonTextStyles,
   getButtonStyles
 } from '../../styles/Home.styles';
-import { FrequentlyAskedQuestions } from '../FrequentlyAskedQuestions';
-import LearnMore from './LearnMore';
 import { createRoomAndRedirectUrl } from '../../utils/CreateRoom';
 
 export interface HomeComponentProps {
@@ -38,8 +36,6 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
             <Text styles={lineHeight28px}>Hello,</Text>
             <Text styles={lineHeight22px}>What would you like to do?</Text>
             <HomeButtons theme={theme} setError={props.onDisplayError} />
-            <FrequentlyAskedQuestions />
-            <LearnMore />
           </Stack>
         </Stack>
       </Stack>
