@@ -1,9 +1,11 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Dropdown, IDropdownOption, mergeStyleSets } from '@fluentui/react';
+import { Dropdown, IDropdownOption, mergeStyleSets, Stack, Text } from '@fluentui/react';
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const changeLanguage = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
     if (option) {
@@ -25,13 +27,15 @@ const LanguageSwitcher = () => {
   });
 
   return (
-    <Dropdown
-      label="Select Language"
-      options={options}
-      defaultSelectedKey={i18n.language}
-      onChange={changeLanguage}
-      styles={styles}
-    />
+    <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 10 }}>
+      <Text>{t('selectLanguage')}</Text>
+      <Dropdown
+        options={options}
+        defaultSelectedKey={i18n.language}
+        onChange={changeLanguage}
+        styles={{ dropdown: styles.dropdown }}
+      />
+    </Stack>
   );
 };
 
