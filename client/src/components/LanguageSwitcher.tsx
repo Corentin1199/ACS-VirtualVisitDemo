@@ -4,10 +4,10 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dropdown, IDropdownOption, mergeStyleSets, Stack, Text } from '@fluentui/react';
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher: React.FC = () => {
   const { i18n, t } = useTranslation();
 
-  const changeLanguage = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption) => {
+  const changeLanguage = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
     if (option) {
       i18n.changeLanguage(option.key as string);
     }
