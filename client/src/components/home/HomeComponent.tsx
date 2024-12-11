@@ -15,6 +15,7 @@ import {
   getButtonStyles
 } from '../../styles/Home.styles';
 import { createRoomAndRedirectUrl } from '../../utils/CreateRoom';
+import { useTranslation } from 'react-i18next';
 
 export interface HomeComponentProps {
   companyName: string;
@@ -24,6 +25,7 @@ export interface HomeComponentProps {
 
 const HomeComponent = (props: HomeComponentProps): JSX.Element => {
   const { theme } = props;
+  const { t } = useTranslation();
 
   return (
     <Stack styles={fullScreenStyles}>
@@ -33,8 +35,8 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
             <Image imageFit={ImageFit.contain} src={imageHome} alt="homeImage"></Image>
           </Stack>
           <Stack styles={containerMarginTop2rem}>
-            <Text styles={lineHeight28px}>Hello,</Text>
-            <Text styles={lineHeight22px}>What would you like to do?</Text>
+            <Text styles={lineHeight28px}>{t('hello')}</Text>
+            <Text styles={lineHeight22px}>{t('callToAction')}</Text>
             <HomeButtons theme={theme} setError={props.onDisplayError} />
           </Stack>
         </Stack>
@@ -44,6 +46,7 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
 };
 
 const HomeButtons = ({ theme, setError }): JSX.Element => {
+  const { t } = useTranslation();
   const callCreateRoom = async (): Promise<void> => {
     try {
       const redirectUrl = await createRoomAndRedirectUrl();
@@ -58,14 +61,14 @@ const HomeButtons = ({ theme, setError }): JSX.Element => {
       <HomeButton
         theme={theme}
         iconName={'Calendar'}
-        text={'Book an appointment'}
+        text={t('bookAppointment')}
         onClick={() => window.location.assign('/book')}
       />
-      <HomeButton theme={theme} iconName={'Video'} text={'Start as Presenter'} onClick={callCreateRoom} />
+      <HomeButton theme={theme} iconName={'Video'} text={t('startAsPresenter')} onClick={callCreateRoom} />
       <HomeButton
         theme={theme}
         iconName={'Link'}
-        text={'Join from link'}
+        text={t('joinFromLink')}
         onClick={() => window.location.assign('/visit')}
       />
     </Stack>

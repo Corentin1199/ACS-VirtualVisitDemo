@@ -5,6 +5,7 @@ import { Stack, Text, ThemeContext, createTheme } from '@fluentui/react';
 import { Theme } from '@fluentui/theme';
 import { WaffleMenu } from './WaffleMenu';
 import { headerContainerStyles, headerTextStyles } from './styles/Header.styles';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 /**
  * @interface HeaderProps The properties that Header uses.
@@ -25,9 +26,17 @@ export const Header = (props: HeaderProps): JSX.Element => {
           theme = createTheme();
         }
         return (
-          <Stack styles={headerContainerStyles(theme)} verticalAlign="center" horizontal>
-            <WaffleMenu parentid={parentid} />
-            <Text styles={headerTextStyles(theme)}>{companyName}</Text>
+          <Stack
+            styles={headerContainerStyles(theme)}
+            verticalAlign="center"
+            horizontal
+            horizontalAlign="space-between"
+          >
+            <Stack horizontal verticalAlign="center">
+              <WaffleMenu parentid={parentid} />
+              <Text styles={headerTextStyles(theme)}>{companyName}</Text>
+            </Stack>
+            <LanguageSwitcher />
           </Stack>
         );
       }}

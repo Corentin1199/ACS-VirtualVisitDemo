@@ -1,0 +1,10 @@
+{
+  "hello": "Bonjour",
+  "callToAction": "Que souhaitez-vous faire?",
+  "bookAppointment": "Prendre rendez-vous",
+  "startAsPresenter": "Commencer en tant que présentateur",
+  "joinFromLink": "Rejoindre depuis le lien",
+  "joinACall": "Collez le lien de l'email dans le champ ci-dessous pour participer à l'appel",
+  "joinCall": "Joindre l'appel",
+  "enterAMeetingLink": "Saisir un lien de réunion"
+}
