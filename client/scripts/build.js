@@ -41,8 +41,15 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 
 const isInteractive = process.stdout.isTTY;
 
-const requiredFiles = [paths.appBookHtml, paths.appBookJs, paths.appVisitHtml, paths.appVisitJs];
-const htmlFilesToSkipCopying = [paths.appBookHtml, paths.appVisitHtml];
+const requiredFiles = [
+  paths.appBookHtml,
+  paths.appBookJs,
+  paths.appSupportHtml,
+  paths.appVisitHtml,
+  paths.appVisitJs,
+  paths.appSupportJs
+];
+const htmlFilesToSkipCopying = [paths.appBookHtml, paths.appVisitHtml, paths.appSupportHtml];
 
 // Warn and crash if required files are missing
 if (!checkRequiredFiles(requiredFiles)) {

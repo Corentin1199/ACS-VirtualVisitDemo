@@ -43,6 +43,10 @@ app.get('/visit', (_, res) => {
   res.sendFile(path.join(__dirname, 'public/visit.html'));
 });
 
+app.get('/support', (_, res) => {
+  res.sendFile(path.join(__dirname, 'public/support.html'));
+});
+
 const config = getServerConfig();
 
 const surveyDBHandler = createSurveyDBHandler(config);

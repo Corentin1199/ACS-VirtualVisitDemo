@@ -104,6 +104,7 @@ module.exports = function (proxy, allowedHost) {
         { from: /^\/home/, to: '/home.html' },
         { from: /^\/book/, to: '/book.html' },
         { from: /^\/visit/, to: '/visit.html' },
+        { from: /^\/support/, to: '/support.html' },
         { from: /^\/pageNotFound/, to: '/pageNotFound.html' }
       ]
     },

@@ -5,22 +5,19 @@
   "screenShareEnabled": true,
   "companyName": "CSS",
   "colorPalette": "#0078d4",
-  "waitingTitle": "Thank you for choosing Lamna Healthcare",
-  "waitingSubtitle": "Your clinician is joining the meeting",
+  "waitingTitle": "Thank you for choosing CSS",
+  "waitingSubtitle": "Your consultant is joining the meeting",
   "logoUrl": "",
   "postCall": {
     "survey": {
-      "type": "onequestionpoll",
+      "type": "msforms",
       "options": {
-        "title": "Tell us how we did",
-        "prompt": "How satisfied are you with this virtual appointment's audio and video quality?",
-        "pollType": "rating",
-        "saveButtonText": "Continue"
+        "surveyUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=h1tONsfBDUKb7sNdGbVXoaTt33-ufi5JrY0uB9_jKqVURUNUSk41SVpGNzVERUYzTkYzWUkzSzZOUS4u"
       }
     }
   },
   "cosmosDb": {
-    "connectionString": "Connection string of your Cosmos DB account",
-    "dbName": "Name of the Cosmos Database"
+    "connectionString": "AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=YT28bgUqXnpxfjoCd0j1sHno0qAZRS5TDMlRsOFbKyoeSwM365yV7RsQJZy9NYh3IjxJGqxA16xmACDbJERWJA==;",
+    "dbName": "cosmos-db-gianmdd4a3s6c"
   }
 }

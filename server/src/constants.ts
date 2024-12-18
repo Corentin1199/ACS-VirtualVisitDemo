@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
-//import exp from "constants";
+// import exp from "constants";
 
 export const VV_COMMUNICATION_SERVICES_CONNECTION_STRING =
   'endpoint=https://acs-demo-cfr.switzerland.communication.azure.com/;accesskey=62PkEjp9uEZ5yS4p2Ok1JFz1yzxmMjPHvCBtmzCpKRZNaUX9ujEQJQQJ99AKACULyCpvBmkeAAAAAZCSy0gU';
@@ -16,7 +16,7 @@ export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TITLE_ENV_NAME = 'Tell us how we
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_PROMPT_ENV_NAME = 'How satisfied were you with your visit?';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TYPE_ENV_NAME = 'rating';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_ANSWER_PLACEHOLDER_ENV_NAME = '';
-export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_SAVE_BUTTON_TEXT_ENV_NAME = 'continue';
+export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_SAVE_BUTTON_TEXT_ENV_NAME = 'Continue';
 export const VV_COSMOS_DB_CONNECTION_STRING =
   'AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/';
 export const VV_COSMOS_DB_NAME = 'Consultation feedback database';

@@ -3,8 +3,8 @@
   "hello": "Hello",
   "callToAction": "What would you like to do?",
   "bookAppointment": "Book an appointment",
-  "startAsPresenter": "Start as Presenter",
   "joinFromLink": "Join from link",
+  "support": "Support",
   "joinACall": "Paste the link from the email in the field bellow to join the call",
   "joinCall": "Join call",
   "enterAMeetingLink": "Enter a meeting link"

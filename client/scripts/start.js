@@ -36,7 +36,14 @@ const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
 
-const requiredFiles = [paths.appBookHtml, paths.appBookJs, paths.appVisitHtml, paths.appVisitJs];
+const requiredFiles = [
+  paths.appBookHtml,
+  paths.appBookJs,
+  paths.appVisitHtml,
+  paths.appVisitJs,
+  paths.appSupportHtml,
+  paths.appSupportJs
+];
 
 // Warn and crash if required files are missing
 if (!checkRequiredFiles(requiredFiles)) {

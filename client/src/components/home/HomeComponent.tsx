@@ -14,7 +14,6 @@ import {
   buttonTextStyles,
   getButtonStyles
 } from '../../styles/Home.styles';
-import { createRoomAndRedirectUrl } from '../../utils/CreateRoom';
 import { useTranslation } from 'react-i18next';
 
 export interface HomeComponentProps {
@@ -47,14 +46,6 @@ const HomeComponent = (props: HomeComponentProps): JSX.Element => {
 
 const HomeButtons = ({ theme, setError }): JSX.Element => {
   const { t } = useTranslation();
-  const callCreateRoom = async (): Promise<void> => {
-    try {
-      const redirectUrl = await createRoomAndRedirectUrl();
-      window.location.assign(redirectUrl);
-    } catch (error) {
-      setError(error);
-    }
-  };
 
   return (
     <Stack horizontal styles={btnStackStyles} wrap horizontalAlign="space-between">
@@ -64,12 +55,17 @@ const HomeButtons = ({ theme, setError }): JSX.Element => {
         text={t('bookAppointment')}
         onClick={() => window.location.assign('/book')}
       />
-      <HomeButton theme={theme} iconName={'Video'} text={t('startAsPresenter')} onClick={callCreateRoom} />
       <HomeButton
         theme={theme}
         iconName={'Link'}
         text={t('joinFromLink')}
         onClick={() => window.location.assign('/visit')}
+      />
+      <HomeButton
+        theme={theme}
+        iconName={'Help'}
+        text={t('support')}
+        onClick={() => window.location.assign('/support')}
       />
     </Stack>
   );

@@ -102,6 +102,11 @@ const navLinkGroups: INavLinkGroup[] = [
         name: 'Visit',
         url: './visit',
         key: 'visit'
+      },
+      {
+        name: 'Support',
+        url: './support',
+        key: 'support'
       }
     ]
   }
