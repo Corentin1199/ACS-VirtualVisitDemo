@@ -16,7 +16,8 @@ const LanguageSwitcher: React.FC = () => {
   const options: IDropdownOption[] = [
     { key: 'en', text: 'English' },
     { key: 'de', text: 'Deutsch' },
-    { key: 'fr', text: 'Français' }
+    { key: 'fr', text: 'Français' },
+    { key: 'it', text: 'Italiano' }
   ];
 
   const styles = mergeStyleSets({

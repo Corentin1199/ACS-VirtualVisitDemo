@@ -7,5 +7,6 @@
   "support": "Support",
   "joinACall": "Paste the link from the email in the field bellow to join the call",
   "joinCall": "Join call",
-  "enterAMeetingLink": "Enter a meeting link"
+  "enterAMeetingLink": "Enter a meeting link",
+  "invalidMeetingLink": "This meeting link is invalid. Verify your meeting link URL."
 }
