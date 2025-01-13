@@ -5,7 +5,9 @@
   "bookAppointment": "Prendre rendez-vous",
   "joinFromLink": "Rejoindre depuis le lien",
   "support": "Soutien",
+  "supportMessage": "Pour obtenir de l'aide, appelez le 058 277 46 00",
   "joinACall": "Collez le lien de l'email dans le champ ci-dessous pour participer à l'appel",
   "joinCall": "Joindre l'appel",
-  "enterAMeetingLink": "Saisir un lien de réunion"
+  "enterAMeetingLink": "Saisir un lien de réunion",
+  "invalidMeetingLink": "Ce lien de réunion n'est pas valide. Vérifiez l'URL de votre lien de réunion."
 }

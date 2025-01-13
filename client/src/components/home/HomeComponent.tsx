@@ -14,6 +14,7 @@ import {
   buttonTextStyles,
   getButtonStyles
 } from '../../styles/Home.styles';
+import '../../i18n';
 import { useTranslation } from 'react-i18next';
 
 export interface HomeComponentProps {

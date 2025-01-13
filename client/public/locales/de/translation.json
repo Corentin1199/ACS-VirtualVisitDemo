@@ -5,7 +5,9 @@
   "bookAppointment": "Einen Termin buchen",
   "joinFromLink": "Über Link beitreten",
   "support": "Unterstützung",
+  "supportMessage": "Für Unterstützung, rufen Sie an: 058 277 46 00",
   "joinACall": "Fügen Sie den Link aus der E-Mail in das unten stehende Feld ein, um an dem Anruf teilzunehmen",
   "joinCall": "Anruf beitreten",
-  "enterAMeetingLink": "Geben Sie einen Meeting-Link ein"
+  "enterAMeetingLink": "Geben Sie einen Meeting-Link ein",
+  "invalidMeetingLink": "Dieser Meeting-Link ist ungültig. Überprüfen Sie Ihre Meeting-Link-URL."
 }

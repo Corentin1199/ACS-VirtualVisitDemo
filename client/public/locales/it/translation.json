@@ -5,7 +5,9 @@
   "bookAppointment": "Prenota un appuntamento",
   "joinFromLink": "Iscriviti tramite il link",
   "support": "Supporto per",
+  "supportMessage": "Per assistenza, chiamare: 058 277 46 00",
   "joinACall": "Incollare il link dall'e-mail nella casella sottostante per partecipare alla chiamata",
   "joinCall": "Partecipa alla chiamata",
-  "enterAMeetingLink": "Inserire un link per la riunione"
+  "enterAMeetingLink": "Inserire un link per la riunione",
+  "invalidMeetingLink": "Questo link per la riunione non è valido. Verifica l'URL del tuo link per la riunione."
 }

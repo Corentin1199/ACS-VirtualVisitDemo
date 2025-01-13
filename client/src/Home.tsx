@@ -11,6 +11,7 @@ import HomeComponent from './components/home/HomeComponent';
 import { Header } from './Header';
 import './styles/Common.css';
 import GenericContainer from './components/GenericContainer';
+import './i18n';
 
 const PARENT_ID = 'HomeSection';
 

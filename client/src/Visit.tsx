@@ -14,6 +14,7 @@ import { getTeamsMeetingLink, getRoomCallLocator, getRoomsUserId, isValidRoomsLi
 import { TeamsMeeting } from './components/teams/TeamsMeeting';
 import { RoomsMeeting } from './components/rooms/RoomsMeeting';
 import './styles/Common.css';
+import './i18n';
 
 const PARENT_ID = 'VisitSection';
 

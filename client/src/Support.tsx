@@ -11,12 +11,14 @@ import { Header } from './Header';
 import { backgroundStyles, fullSizeStyles } from './styles/Common.styles';
 import GenericContainer from './components/GenericContainer';
 import './styles/Common.css';
+import { useTranslation } from 'react-i18next';
 
 const PARENT_ID = 'SupportSection';
 
 const Support = (): JSX.Element => {
   const [config, setConfig] = useState<AppConfigModel | undefined>(undefined);
   const [error, setError] = useState<any | undefined>(undefined);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -46,8 +48,8 @@ const Support = (): JSX.Element => {
         <Header companyName={config.companyName} parentid={PARENT_ID} />
         <GenericContainer layerHostId={PARENT_ID} theme={config.theme}>
           <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: '100%' } }}>
-            <Text variant="xxLarge">Support</Text>
-            <Text variant="large">For support, call: 058 277 46 00</Text>
+            <Text variant="xxLarge">{t('support')}</Text>
+            <Text variant="large">{t('supportMessage')}</Text>
           </Stack>
         </GenericContainer>
       </Stack>

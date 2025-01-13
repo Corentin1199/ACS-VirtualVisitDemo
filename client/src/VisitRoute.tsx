@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Visit } from './Visit';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
+import './i18n';
 
 initializeIcons();
 
