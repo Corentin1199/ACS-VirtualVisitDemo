@@ -11,6 +11,7 @@ import { Header } from './Header';
 import { backgroundStyles, fullSizeStyles } from './styles/Common.styles';
 import GenericContainer from './components/GenericContainer';
 import './styles/Common.css';
+// import './i18n';
 import { useTranslation } from 'react-i18next';
 
 const PARENT_ID = 'SupportSection';

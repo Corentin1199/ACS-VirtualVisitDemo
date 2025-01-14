@@ -9,5 +9,8 @@
   "joinACall": "Incollare il link dall'e-mail nella casella sottostante per partecipare alla chiamata",
   "joinCall": "Partecipa alla chiamata",
   "enterAMeetingLink": "Inserire un link per la riunione",
-  "invalidMeetingLink": "Questo link per la riunione non è valido. Verifica l'URL del tuo link per la riunione."
+  "invalidMeetingLink": "Questo link per la riunione non è valido. Verifica l'URL del tuo link per la riunione.",
+  "home": "Pagina principale",
+  "visit": "Visita",
+  "book": "Prenotare"
 }

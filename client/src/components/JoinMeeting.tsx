@@ -9,6 +9,7 @@ import { backgroundStyles } from '../styles/Common.styles';
 import { formStyles } from '../styles/JoinMeeting.Styles';
 import { getCurrentMeetingURL, isValidRoomsLink, isValidTeamsLink, makeTeamsJoinUrl } from '../utils/GetMeetingLink';
 import GenericContainer from './GenericContainer';
+import i18next from 'i18next';
 
 interface JoinMeetingProps {
   config: AppConfigModel;
@@ -43,8 +44,7 @@ export class JoinMeeting extends React.Component<JoinMeetingProps, JoinMeetingSt
     if (isValidTeamsLink(value) || value === '' || isValidRoomsLink(value)) {
       return '';
     }
-
-    return 'This meeting link is invalid. Verify your meeting link URL.';
+    return i18next.t('invalidMeetingLink');
   }
 
   render(): JSX.Element {
@@ -66,8 +66,8 @@ export class JoinMeeting extends React.Component<JoinMeetingProps, JoinMeetingSt
               <Header companyName={this.props.config.companyName} parentid={parentID} />
               <GenericContainer layerHostId={parentID} theme={theme}>
                 <TextField
-                  label="Join a call"
-                  placeholder="Enter a meeting link"
+                  label={i18next.t('joinACall')}
+                  placeholder={i18next.t('enterAMeetingLink')}
                   styles={formStyles}
                   iconProps={{ iconName: 'Link' }}
                   onChange={this.onTeamsMeetingLinkChange.bind(this)}
@@ -77,7 +77,7 @@ export class JoinMeeting extends React.Component<JoinMeetingProps, JoinMeetingSt
                 <PrimaryButton
                   disabled={!enableButton}
                   styles={formStyles}
-                  text={'Join call'}
+                  text={i18next.t('joinCall')}
                   onClick={() => this.props.onJoinMeeting(link)}
                 />
               </GenericContainer>

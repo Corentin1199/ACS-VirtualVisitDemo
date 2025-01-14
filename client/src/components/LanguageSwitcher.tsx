@@ -10,6 +10,7 @@ const LanguageSwitcher: React.FC = () => {
   const changeLanguage = (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption): void => {
     if (option) {
       i18n.changeLanguage(option.key as string);
+      window.location.reload();
     }
   };
 

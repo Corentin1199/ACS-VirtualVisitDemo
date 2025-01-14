@@ -12,6 +12,7 @@ i18n
   .init({
     fallbackLng: 'de',
     debug: true,
+    react: { useSuspense: false },
     interpolation: {
       escapeValue: false
     },
