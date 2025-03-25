@@ -42,7 +42,7 @@ export const TeamsMeeting = (props: TeamsMeetingProps): JSX.Element => {
     <TeamsMeetingExperience
       userId={token.user}
       token={token.token}
-      displayName={'InitialDisplayName'}
+      displayName={''}
       endpointUrl={config.communicationEndpoint}
       locator={locator}
       fluentTheme={config.theme}

@@ -11,7 +11,7 @@ import {
   createAzureCommunicationCallWithChatAdapterFromClients,
   createStatefulChatClient
 } from '@azure/communication-react';
-import { Theme, Spinner, PartialTheme, Image, Stack } from '@fluentui/react';
+import { Theme, Spinner, PartialTheme, Image, Stack, TextField, PrimaryButton, Modal, Dropdown } from '@fluentui/react';
 import MobileDetect from 'mobile-detect';
 import { useEffect, useMemo, useState } from 'react';
 import { getApplicationName, getApplicationVersion } from '../../utils/GetAppInfo';
@@ -44,7 +44,6 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
   const {
     chatEnabled,
     screenShareEnabled,
-    displayName,
     endpointUrl,
     fluentTheme,
     locator,
@@ -58,42 +57,131 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
     onDisplayError
   } = props;
 
+  const translations = {
+    en: {
+      enterDisplayName: 'Enter your display name',
+      placeholderName: 'Your name',
+      submitButton: 'Submit',
+      selectLanguage: 'Select Language'
+    },
+    de: {
+      enterDisplayName: 'Geben Sie Ihren Anzeigenamen ein',
+      placeholderName: 'Ihr Name',
+      submitButton: 'Einreichen',
+      selectLanguage: 'Sprache auswählen'
+    },
+    fr: {
+      enterDisplayName: "Entrez votre nom d'affichage",
+      placeholderName: 'Votre nom',
+      submitButton: 'Soumettre',
+      selectLanguage: 'Sélectionner la langue'
+    },
+    it: {
+      enterDisplayName: 'Inserisci il tuo nome visualizzato',
+      placeholderName: 'Il tuo nome',
+      submitButton: 'Invia',
+      selectLanguage: 'Seleziona la lingua'
+    }
+  };
+
   const [callWithChatAdapter, setCallWithChatAdapter] = useState<CallWithChatAdapter | undefined>(undefined);
   const [renderPostCall, setRenderPostCall] = useState<boolean>(false);
   const [callId, setCallId] = useState<string>();
   const credential = useMemo(() => new AzureCommunicationTokenCredential(token), [token]);
 
-  useEffect(() => {
-    const _createAdapters = async (): Promise<void> => {
-      try {
-        const adapter = await _createCustomAdapter(
-          { communicationUserId: userId.communicationUserId },
-          credential,
-          displayName,
-          locator,
-          endpointUrl,
-          chatEnabled
-        );
-        if (postCall?.survey.type) {
-          adapter.on('callEnded', () => {
-            setRenderPostCall(true);
-          });
-        }
-        adapter.onStateChange((state) => {
-          if (state.call?.id !== undefined && state.call?.id !== callId) {
-            setCallId(adapter.getState().call?.id);
-          }
-        });
-        setCallWithChatAdapter(adapter);
-      } catch (err) {
-        // todo: error logging
-        console.log(err);
-        onDisplayError(err);
-      }
-    };
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true); // Modal starts open
+  const [tempDisplayName, setTempDisplayName] = useState<string>(''); // Temporary display name
+  const [displayName, setDisplayName] = useState<string>(''); // Final display name
+  const [language, setLanguage] = useState<'en' | 'de' | 'fr' | 'it'>('en');
 
-    _createAdapters();
-  }, [credential, displayName, endpointUrl, locator, userId, onDisplayError]);
+  const handleModalSubmit = async (): Promise<void> => {
+    if (tempDisplayName.trim()) {
+      setDisplayName(tempDisplayName); // Set the display name
+      setIsModalOpen(false); // Close the modal
+      await createAdapterWithDisplayName(tempDisplayName); // Call the adapter creation function
+    }
+  };
+
+  const createAdapterWithDisplayName = async (name: string): Promise<void> => {
+    try {
+      const adapter = await _createCustomAdapter(
+        { communicationUserId: userId.communicationUserId },
+        credential,
+        name,
+        locator,
+        endpointUrl,
+        chatEnabled
+      );
+
+      if (postCall?.survey.type) {
+        adapter.on('callEnded', () => {
+          setRenderPostCall(true);
+        });
+      }
+
+      adapter.onStateChange((state) => {
+        if (state.call?.id !== undefined && state.call?.id !== callId) {
+          setCallId(adapter.getState().call?.id);
+        }
+      });
+
+      setCallWithChatAdapter(adapter);
+    } catch (err) {
+      console.log(err);
+      onDisplayError(err);
+    }
+  };
+
+  useEffect(() => {
+    if (!displayName) {
+      setIsModalOpen(true); // Open the modal if displayName is not set
+    }
+  }, [displayName]);
+
+  if (isModalOpen) {
+    const t = translations[language];
+    const languageOptions = [
+      { key: 'en', text: 'English' },
+      { key: 'de', text: 'Deutsch' },
+      { key: 'fr', text: 'Français' },
+      { key: 'it', text: 'Italiano' }
+    ];
+    return (
+      <Modal isOpen={isModalOpen} onDismiss={() => setIsModalOpen(false)} isBlocking={true}>
+        <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: '100%', padding: '2rem' } }}>
+          <Stack
+            horizontal
+            horizontalAlign="space-between"
+            styles={{ root: { width: '100%', marginBottom: '1rem' } }}
+            tokens={{ childrenGap: 10 }}
+          >
+            <Stack.Item grow align="center">
+              <Image
+                src={logoUrl || imageLogo}
+                alt="Logo"
+                style={{ maxHeight: '50px', maxWidth: 'auto', objectFit: 'contain' }}
+              />
+            </Stack.Item>
+            <Dropdown
+              label={t.selectLanguage}
+              options={languageOptions}
+              selectedKey={language}
+              onChange={(e, option) => setLanguage(option?.key as 'en' | 'de')}
+              styles={{ dropdown: { marginBottom: '1rem', width: '100%' } }}
+            />
+          </Stack>
+          <TextField
+            label={t.enterDisplayName}
+            placeholder={t.placeholderName}
+            value={tempDisplayName}
+            onChange={(e, newValue) => setTempDisplayName(newValue || '')}
+            styles={{ root: { marginBottom: '1rem', width: '300px' } }}
+          />
+          <PrimaryButton text={t.submitButton} onClick={handleModalSubmit} disabled={!tempDisplayName.trim()} />
+        </Stack>
+      </Modal>
+    );
+  }
 
   if (callWithChatAdapter) {
     const logo = logoUrl ? <img style={meetingExperienceLogoStyles} src={logoUrl} /> : <></>;
