@@ -30,7 +30,7 @@ const LanguageSwitcher: React.FC = () => {
 
   return (
     <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 10 }}>
-      <Text>{t('selectLanguage')}</Text>
+      <Text styles={{ root: { color: 'white' } }}>{t('selectLanguage')}</Text>
       <Dropdown
         options={options}
         defaultSelectedKey={i18n.language}

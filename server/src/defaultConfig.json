@@ -4,9 +4,9 @@
   "chatEnabled": true,
   "screenShareEnabled": true,
   "companyName": "CSS",
-  "colorPalette": "#0078d4",
+  "colorPalette": "#00327d",
   "waitingTitle": "Thank you for choosing CSS",
-  "waitingSubtitle": "Your consultant is joining the meeting",
+  "waitingSubtitle": "Your CSS consultant is joining the meeting",
   "logoUrl": "",
   "postCall": {
     "survey": {

@@ -11,7 +11,7 @@ import {
   createAzureCommunicationCallWithChatAdapterFromClients,
   createStatefulChatClient
 } from '@azure/communication-react';
-import { Theme, Spinner, PartialTheme } from '@fluentui/react';
+import { Theme, Spinner, PartialTheme, Image, Stack } from '@fluentui/react';
 import MobileDetect from 'mobile-detect';
 import { useEffect, useMemo, useState } from 'react';
 import { getApplicationName, getApplicationVersion } from '../../utils/GetAppInfo';
@@ -20,6 +20,7 @@ import { fullSizeStyles } from '../../styles/Common.styles';
 import { callWithChatComponentStyles, meetingExperienceLogoStyles } from '../../styles/MeetingExperience.styles';
 import { createStubChatClient } from '../../utils/stubs/chat';
 import { Survey } from '../postcall/Survey';
+import imageLogo from '../../assets/homePageImage.png';
 
 import { PostCallConfig } from '../../models/ConfigModel';
 export interface TeamsMeetingExperienceProps {
@@ -35,6 +36,7 @@ export interface TeamsMeetingExperienceProps {
   chatEnabled: boolean;
   screenShareEnabled: boolean;
   postCall: PostCallConfig | undefined;
+  imageUrl: string;
   onDisplayError(error: any): void;
 }
 
@@ -52,6 +54,7 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
     waitingSubtitle,
     waitingTitle,
     postCall,
+    imageUrl,
     onDisplayError
   } = props;
 
@@ -91,6 +94,7 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
 
     _createAdapters();
   }, [credential, displayName, endpointUrl, locator, userId, onDisplayError]);
+
   if (callWithChatAdapter) {
     const logo = logoUrl ? <img style={meetingExperienceLogoStyles} src={logoUrl} /> : <></>;
     const locale = COMPOSITE_LOCALE_EN_US;
@@ -116,35 +120,86 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
             }}
           />
         )}
-        <div style={callWithChatComponentStyles(renderPostCall && postCall ? true : false)}>
-          <CallWithChatComposite
-            adapter={callWithChatAdapter}
-            fluentTheme={fluentTheme}
-            options={{
-              callControls: {
-                chatButton: chatEnabled,
-                screenShareButton: screenShareEnabled
+        <Stack horizontal styles={{ root: { height: '100%', width: '100%' } }}>
+          <Stack.Item
+            grow
+            styles={{
+              root: {
+                flexBasis: '35%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'white'
               }
             }}
-            locale={{
-              component: locale.component,
-              strings: {
-                chat: locale.strings.chat,
-                call: {
-                  ...locale.strings.call,
-                  lobbyScreenWaitingToBeAdmittedTitle: waitingTitle,
-                  lobbyScreenWaitingToBeAdmittedMoreDetails: waitingSubtitle
-                },
-                callWithChat: locale.strings.callWithChat
-              }
-            }}
-            icons={{
-              LobbyScreenWaitingToBeAdmitted: logo,
-              LobbyScreenConnectingToCall: logo
-            }}
-            formFactor={formFactorValue}
-          />
-        </div>
+          >
+            <div
+              style={{
+                height: '25%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Image
+                src={logoUrl || imageLogo} // Replace with your logo URL
+                alt="Logo"
+                style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+              />
+            </div>
+            <div
+              style={{
+                height: '75%', // 75% of the left component's height
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Image
+                src={imageUrl} // Replace with your image URL
+                alt="Left Image"
+                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+              />
+            </div>
+          </Stack.Item>
+
+          <Stack.Item
+            grow
+            styles={{ root: { flexBasis: '65%', display: 'flex', justifyContent: 'flex-end', alignItems: 'center' } }}
+          >
+            <div style={callWithChatComponentStyles(renderPostCall && postCall ? true : false)}>
+              <CallWithChatComposite
+                adapter={callWithChatAdapter}
+                fluentTheme={fluentTheme}
+                options={{
+                  callControls: {
+                    chatButton: chatEnabled,
+                    screenShareButton: screenShareEnabled
+                  }
+                }}
+                locale={{
+                  component: locale.component,
+                  strings: {
+                    chat: locale.strings.chat,
+                    call: {
+                      ...locale.strings.call,
+                      lobbyScreenWaitingToBeAdmittedTitle: waitingTitle,
+                      lobbyScreenWaitingToBeAdmittedMoreDetails: waitingSubtitle
+                    },
+                    callWithChat: locale.strings.callWithChat
+                  }
+                }}
+                icons={{
+                  LobbyScreenWaitingToBeAdmitted: logo,
+                  LobbyScreenConnectingToCall: logo
+                }}
+                formFactor={formFactorValue}
+              />
+            </div>
+          </Stack.Item>
+        </Stack>
       </>
     );
   }

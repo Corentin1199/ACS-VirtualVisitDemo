@@ -42,7 +42,7 @@ export const TeamsMeeting = (props: TeamsMeetingProps): JSX.Element => {
     <TeamsMeetingExperience
       userId={token.user}
       token={token.token}
-      displayName="Virtual Appointments User"
+      displayName={'InitialDisplayName'}
       endpointUrl={config.communicationEndpoint}
       locator={locator}
       fluentTheme={config.theme}
@@ -52,6 +52,7 @@ export const TeamsMeeting = (props: TeamsMeetingProps): JSX.Element => {
       chatEnabled={config.chatEnabled}
       screenShareEnabled={config.screenShareEnabled}
       postCall={config.postCall}
+      imageUrl={'https://picsum.photos/500/700'}
       onDisplayError={(error) => onDisplayError(error)}
     />
   );

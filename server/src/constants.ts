@@ -30,4 +30,4 @@ export const ERROR_PAYLOAD_500 = {
 };
 export const VV_WAITING_SUBTITLE_ENV_NAME = 'Please wait for the host to join the call.';
 export const VV_LOGO_URL_ENV_NAME = 'https://avatars.githubusercontent.com/u/44036562?s=200&v=4';
-export const VV_COLOR_PALETTE_ENV_NAME = '#0078D4';
+export const VV_COLOR_PALETTE_ENV_NAME = '#00327D';
