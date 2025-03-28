@@ -10,8 +10,9 @@ export const VV_MICROSOFT_BOOKINGS_URL_ENV_NAME =
 export const VV_CHAT_ENABLED_ENV_NAME = 'true';
 export const VV_SCREENSHARE_ENABLED_ENV_NAME = 'true';
 export const VV_COMPANY_NAME_ENV_NAME = 'CSS';
-export const VV_POSTCALL_SURVEY_TYPE_ENV_NAME = 'onequestionpoll';
-export const VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME = 'VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL';
+export const VV_POSTCALL_SURVEY_TYPE_ENV_NAME = 'msforms';
+export const VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME =
+  'https://forms.office.com/Pages/ResponsePage.aspx?id=h1tONsfBDUKb7sNdGbVXoaTt33-ufi5JrY0uB9_jKqVURUNUSk41SVpGNzVERUYzTkYzWUkzSzZOUS4u';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TITLE_ENV_NAME = 'Tell us how we did!';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_PROMPT_ENV_NAME = 'How satisfied were you with your visit?';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TYPE_ENV_NAME = 'rating';
@@ -28,6 +29,6 @@ export const ERROR_PAYLOAD_500 = {
   title: '500: Internal server error',
   detail: 'The server has encountered an error. Refresh the page to try again.'
 };
-export const VV_WAITING_SUBTITLE_ENV_NAME = 'Please wait for the host to join the call.';
+export const VV_WAITING_SUBTITLE_ENV_NAME = 'Your CSS consultant is joining the meeting';
 export const VV_LOGO_URL_ENV_NAME = 'https://avatars.githubusercontent.com/u/44036562?s=200&v=4';
 export const VV_COLOR_PALETTE_ENV_NAME = '#00327D';

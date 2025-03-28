@@ -23,6 +23,7 @@ import { Survey } from '../postcall/Survey';
 import imageLogo from '../../assets/homePageImage.png';
 
 import { PostCallConfig } from '../../models/ConfigModel';
+
 export interface TeamsMeetingExperienceProps {
   userId: CommunicationUserIdentifier;
   token: string;
@@ -89,16 +90,17 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
   const [callId, setCallId] = useState<string>();
   const credential = useMemo(() => new AzureCommunicationTokenCredential(token), [token]);
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(true); // Modal starts open
-  const [tempDisplayName, setTempDisplayName] = useState<string>(''); // Temporary display name
-  const [displayName, setDisplayName] = useState<string>(''); // Final display name
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(true);
+  const [tempDisplayName, setTempDisplayName] = useState<string>('');
+  const [displayName, setDisplayName] = useState<string>('');
   const [language, setLanguage] = useState<'en' | 'de' | 'fr' | 'it'>('en');
+  const [callState, setCallState] = useState<string>('No call state available');
 
   const handleModalSubmit = async (): Promise<void> => {
     if (tempDisplayName.trim()) {
-      setDisplayName(tempDisplayName); // Set the display name
-      setIsModalOpen(false); // Close the modal
-      await createAdapterWithDisplayName(tempDisplayName); // Call the adapter creation function
+      setDisplayName(tempDisplayName);
+      setIsModalOpen(false);
+      await createAdapterWithDisplayName(tempDisplayName);
     }
   };
 
@@ -123,6 +125,8 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
         if (state.call?.id !== undefined && state.call?.id !== callId) {
           setCallId(adapter.getState().call?.id);
         }
+        const updatedCallState = state.call?.state || 'No call state available';
+        setCallState(updatedCallState);
       });
 
       setCallWithChatAdapter(adapter);
@@ -134,8 +138,21 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
 
   useEffect(() => {
     if (!displayName) {
-      setIsModalOpen(true); // Open the modal if displayName is not set
+      setIsModalOpen(true);
     }
+
+    // if (callWithChatAdapter) {
+    //   const intervalId = setInterval(() => {
+    //     const callState = callWithChatAdapter.getState().call?.state || 'No call state available';
+    //     console.log('Call State (polled):', callState);
+    //   }, 1000); // Poll every 1 second
+
+    //   // Cleanup the interval when the component unmounts
+    //   return () => {
+    //     clearInterval(intervalId);
+    //   };
+    // }
+    // return undefined; // Explicitly return undefined for other cases
   }, [displayName]);
 
   if (isModalOpen) {
@@ -209,49 +226,47 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
           />
         )}
         <Stack horizontal styles={{ root: { height: '100%', width: '100%' } }}>
-          <Stack.Item
-            grow
-            styles={{
-              root: {
-                flexBasis: '35%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'white'
-              }
-            }}
-          >
-            <div
-              style={{
-                height: '25%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
+          {callState !== 'Connected' && callState !== 'Disconnecting' && !renderPostCall && (
+            <Stack.Item
+              grow
+              styles={{
+                root: {
+                  flexBasis: '35%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  backgroundColor: 'white'
+                }
               }}
             >
-              <Image
-                src={logoUrl || imageLogo} // Replace with your logo URL
-                alt="Logo"
-                style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
-              />
-            </div>
-            <div
-              style={{
-                height: '75%', // 75% of the left component's height
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }}
-            >
-              <Image
-                src={imageUrl} // Replace with your image URL
-                alt="Left Image"
-                style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-              />
-            </div>
-          </Stack.Item>
+              <div
+                style={{
+                  height: '25%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image
+                  src={logoUrl || imageLogo}
+                  alt="Logo"
+                  style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+                />
+              </div>
+              <div
+                style={{
+                  height: '75%',
+                  width: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }}
+              >
+                <Image src={imageUrl} alt="Left Image" style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+              </div>
+            </Stack.Item>
+          )}
 
           <Stack.Item
             grow
