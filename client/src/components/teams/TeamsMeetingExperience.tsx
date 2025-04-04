@@ -21,8 +21,8 @@ import { callWithChatComponentStyles, meetingExperienceLogoStyles } from '../../
 import { createStubChatClient } from '../../utils/stubs/chat';
 import { Survey } from '../postcall/Survey';
 import imageLogo from '../../assets/homePageImage.png';
-
 import { PostCallConfig } from '../../models/ConfigModel';
+import { validateDisplayName } from '../../utils/validateDisplayName';
 
 export interface TeamsMeetingExperienceProps {
   userId: CommunicationUserIdentifier;
@@ -95,9 +95,19 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
   const [displayName, setDisplayName] = useState<string>('');
   const [language, setLanguage] = useState<'en' | 'de' | 'fr' | 'it'>('en');
   const [callState, setCallState] = useState<string>('No call state available');
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleModalSubmit = async (): Promise<void> => {
+    const errors = await validateDisplayName(tempDisplayName);
+
+    if (errors.length > 0) {
+      setErrorMessage(errors.join('\n'));
+      console.log(errorMessage);
+      return;
+    }
+
     if (tempDisplayName.trim()) {
+      setErrorMessage(null);
       setDisplayName(tempDisplayName);
       setIsModalOpen(false);
       await createAdapterWithDisplayName(tempDisplayName);
@@ -183,7 +193,7 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
               label={t.selectLanguage}
               options={languageOptions}
               selectedKey={language}
-              onChange={(e, option) => setLanguage(option?.key as 'en' | 'de')}
+              onChange={(e, option) => setLanguage(option?.key as 'en' | 'de' | 'fr' | 'it')}
               styles={{ dropdown: { marginBottom: '1rem', width: '100%' } }}
             />
           </Stack>
@@ -194,6 +204,23 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
             onChange={(e, newValue) => setTempDisplayName(newValue || '')}
             styles={{ root: { marginBottom: '1rem', width: '300px' } }}
           />
+          {errorMessage && (
+            <Stack
+              styles={{
+                root: {
+                  color: '#B22222',
+                  marginBottom: '1rem',
+                  textAlign: 'left',
+                  width: '300px',
+                  fontFamily: 'Segoe UI, sans-serif'
+                }
+              }}
+            >
+              {errorMessage.split('\n').map((error, index) => (
+                <div key={index}>{error}</div>
+              ))}
+            </Stack>
+          )}
           <PrimaryButton text={t.submitButton} onClick={handleModalSubmit} disabled={!tempDisplayName.trim()} />
         </Stack>
       </Modal>

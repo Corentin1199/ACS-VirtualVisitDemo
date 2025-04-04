@@ -3,6 +3,7 @@
 
 import { SurveyResultRequest } from '../models/surveyModel';
 import { JoinRoomRequest } from '../models/roomModel';
+import { forbiddenWords } from './forbiddenWords'; // Import the forbidden words list
 
 export const surveyResultRequestValidator = (requestData: SurveyResultRequest): string[] => {
   const { callId, acsUserId, meetingLink, response } = requestData;
@@ -36,6 +37,38 @@ export const joinRoomRequestValidator = (requestData: JoinRoomRequest): string[]
   // Check if each field types are correct
   if (roomId && typeof roomId !== 'string') errors.push('roomId type must be string');
   if (userId && typeof userId !== 'string') errors.push('userId type must be string');
+
+  return errors;
+};
+
+export const validateDisplayName = (name: string): string[] => {
+  const errors: string[] = [];
+
+  // Rule 1: The username must consist of two words
+  const words = name.trim().split(/\s+/);
+  if (words.length !== 2) {
+    errors.push('Display name must consist of two words.');
+  }
+
+  // Rule 2: The username must only contain letters
+  const isValidFormat = /^[a-zA-Z\s]+$/.test(name);
+  if (!isValidFormat) {
+    errors.push('Display name must only contain letters.');
+  }
+
+  // Rule 3: The username must not contain forbidden words
+  const normalizedName = name.toLowerCase();
+  for (const word of forbiddenWords) {
+    if (normalizedName.includes(word)) {
+      errors.push(`Display name is containing a forbidden word.`);
+      break;
+    }
+  }
+
+  // Rule 4: The username must not exceed 30 characters
+  if (name.length > 30) {
+    errors.push('Display name must not exceed 30 characters.');
+  }
 
   return errors;
 };
