@@ -63,7 +63,7 @@ export class JoinMeeting extends React.Component<JoinMeetingProps, JoinMeetingSt
           }
           return (
             <Stack styles={backgroundStyles(theme)}>
-              <Header companyName={this.props.config.companyName} parentid={parentID} />
+              <Header companyName={this.props.config.companyName} />
               <GenericContainer layerHostId={parentID} theme={theme}>
                 <TextField
                   label={i18next.t('joinACall')}

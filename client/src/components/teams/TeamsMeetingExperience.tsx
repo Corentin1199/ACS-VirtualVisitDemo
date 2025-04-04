@@ -102,7 +102,6 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
 
     if (errors.length > 0) {
       setErrorMessage(errors.join('\n'));
-      console.log(errorMessage);
       return;
     }
 

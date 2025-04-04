@@ -46,7 +46,7 @@ const Support = (): JSX.Element => {
   return (
     <ThemeProvider theme={config.theme} style={{ height: '100%' }}>
       <Stack styles={backgroundStyles(config.theme)}>
-        <Header companyName={config.companyName} parentid={PARENT_ID} />
+        <Header companyName={config.companyName} />
         <GenericContainer layerHostId={PARENT_ID} theme={config.theme}>
           <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: '100%' } }}>
             <Text variant="xxLarge">{t('support')}</Text>
