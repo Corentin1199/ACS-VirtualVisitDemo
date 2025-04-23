@@ -84,7 +84,6 @@ describe('TeamsMeetingExperience', () => {
         chatEnabled={true}
         screenShareEnabled={true}
         postCall={mockPostCall}
-        imageUrl={'https://picsum.photos/200/300'}
         onDisplayError={jest.fn()}
       />
     );
@@ -126,7 +125,6 @@ describe('TeamsMeetingExperience', () => {
         chatEnabled={true}
         screenShareEnabled={true}
         postCall={mockPostCall}
-        imageUrl={'https://picsum.photos/200/300'}
         onDisplayError={jest.fn()}
       />
     );
@@ -167,7 +165,6 @@ describe('TeamsMeetingExperience', () => {
           chatEnabled={chatEnabled}
           screenShareEnabled={screenShareEnabled}
           postCall={undefined}
-          imageUrl={'https://picsum.photos/200/300'}
           onDisplayError={jest.fn()}
         />
       );
@@ -214,7 +211,6 @@ describe('TeamsMeetingExperience', () => {
         chatEnabled={true}
         screenShareEnabled={true}
         postCall={mockPostCall}
-        imageUrl={'https://picsum.photos/200/300'}
         onDisplayError={jest.fn()}
       />
     );
@@ -249,7 +245,6 @@ describe('TeamsMeetingExperience', () => {
         chatEnabled={true}
         screenShareEnabled={true}
         postCall={undefined}
-        imageUrl={'https://picsum.photos/200/300'}
         onDisplayError={jest.fn()}
       />
     );
@@ -286,7 +281,6 @@ describe('TeamsMeetingExperience', () => {
         chatEnabled={true}
         screenShareEnabled={true}
         postCall={mockPostCall}
-        imageUrl={'https://picsum.photos/200/300'}
         onDisplayError={jest.fn()}
       />
     );

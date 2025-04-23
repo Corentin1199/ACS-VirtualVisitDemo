@@ -21,6 +21,10 @@ import { callWithChatComponentStyles, meetingExperienceLogoStyles } from '../../
 import { createStubChatClient } from '../../utils/stubs/chat';
 import { Survey } from '../postcall/Survey';
 import imageLogo from '../../assets/homePageImage.png';
+import image1 from '../../assets/css30246.jpg';
+import image2 from '../../assets/css30281.jpg';
+import image3 from '../../assets/CSS439368.jpg';
+import image4 from '../../assets/CSS441555.jpg';
 import { PostCallConfig } from '../../models/ConfigModel';
 import { validateDisplayName } from '../../utils/validateDisplayName';
 
@@ -37,7 +41,6 @@ export interface TeamsMeetingExperienceProps {
   chatEnabled: boolean;
   screenShareEnabled: boolean;
   postCall: PostCallConfig | undefined;
-  imageUrl: string;
   onDisplayError(error: any): void;
 }
 
@@ -54,7 +57,6 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
     waitingSubtitle,
     waitingTitle,
     postCall,
-    imageUrl,
     onDisplayError
   } = props;
 
@@ -96,6 +98,16 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
   const [language, setLanguage] = useState<'en' | 'de' | 'fr' | 'it'>('en');
   const [callState, setCallState] = useState<string>('No call state available');
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const images = [image1, image2, image3, image4];
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 10000); // Change image every 3 seconds
+    return () => clearInterval(interval);
+  }, []);
 
   const handleModalSubmit = async (): Promise<void> => {
     const errors = await validateDisplayName(tempDisplayName);
@@ -149,19 +161,6 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
     if (!displayName) {
       setIsModalOpen(true);
     }
-
-    // if (callWithChatAdapter) {
-    //   const intervalId = setInterval(() => {
-    //     const callState = callWithChatAdapter.getState().call?.state || 'No call state available';
-    //     console.log('Call State (polled):', callState);
-    //   }, 1000); // Poll every 1 second
-
-    //   // Cleanup the interval when the component unmounts
-    //   return () => {
-    //     clearInterval(intervalId);
-    //   };
-    // }
-    // return undefined; // Explicitly return undefined for other cases
   }, [displayName]);
 
   if (isModalOpen) {
@@ -254,7 +253,6 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
         <Stack horizontal styles={{ root: { height: '100%', width: '100%' } }}>
           {callState !== 'Connected' && callState !== 'Disconnecting' && !renderPostCall && (
             <Stack.Item
-              grow
               styles={{
                 root: {
                   flexBasis: '35%',
@@ -286,10 +284,15 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
                   width: '100%',
                   display: 'flex',
                   justifyContent: 'center',
-                  alignItems: 'center'
+                  alignItems: 'center',
+                  backgroundColor: '#F5F5F5'
                 }}
               >
-                <Image src={imageUrl} alt="Left Image" style={{ height: '100%', width: '100%', objectFit: 'cover' }} />
+                <Image
+                  src={images[currentImageIndex]}
+                  alt={`Image ${currentImageIndex + 1}`}
+                  style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                />
               </div>
             </Stack.Item>
           )}

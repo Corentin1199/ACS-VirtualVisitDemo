@@ -52,7 +52,6 @@ export const TeamsMeeting = (props: TeamsMeetingProps): JSX.Element => {
       chatEnabled={config.chatEnabled}
       screenShareEnabled={config.screenShareEnabled}
       postCall={config.postCall}
-      imageUrl={'https://picsum.photos/500/700'}
       onDisplayError={(error) => onDisplayError(error)}
     />
   );

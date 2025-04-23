@@ -1,3 +1,5 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT license.
 export const validateDisplayName = async (displayName: string): Promise<string[]> => {
   try {
     const response = await fetch('/api/validateDisplayName', {
