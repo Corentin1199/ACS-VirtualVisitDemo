@@ -36,30 +36,31 @@ export const validateOTP = (otpDBHandler: OTPDBHandler) => async (
     const { email, otp } = req.body;
 
     if (!email || !otp) {
-      return res.status(400).send({ error: 'Email and OTP are required' });
+      return res.status(400).send({ error: 'Email and OTP are required to access this ressource' });
     }
 
     const userId = crypto.createHash('sha256').update(email).digest('hex');
-
     const validationResult = await otpDBHandler.validateOTP(userId, otp);
 
     if (validationResult.success) {
-      return res.status(200).send({ message: 'OTP validated successfully' });
+      return res.status(200).send({ redirectUrl: '/visit' });
+    } else {
+      return res.status(403).send({ error: 'Access denied. OTP validation failed.' });
     }
 
-    switch (validationResult.error) {
-      case 'Too many validation attempts, contact Support for new OTP':
-        return res.status(429).send({ error: validationResult.error });
-      case 'Invalid OTP':
-        return res.status(400).send({ error: validationResult.error });
-      case 'No OTP found or OTP expired':
-        return res.status(404).send({ error: validationResult.error });
-      default:
-        return res.status(500).send({ error: 'An unknown error occurred' });
-    }
+    // switch (validationResult.error) {
+    //   case 'Too many validation attempts, contact Support for new OTP':
+    //     return res.status(429).send({ error: validationResult.error });
+    //   case 'Invalid OTP':
+    //     return res.status(400).send({ error: validationResult.error });
+    //   case 'No OTP found or OTP expired':
+    //     return res.status(404).send({ error: validationResult.error });
+    //   default:
+    //     return res.status(500).send({ error: 'An unknown error occurred' });
+    // }
   } catch (error) {
-    console.error('Error validating OTP:', error);
-    return next(error);
+    console.error('Error in OTP validation middleware:', error);
+    return res.status(500).send({ error: 'An internal server error occurred' });
   }
 };
 

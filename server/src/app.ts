@@ -13,12 +13,14 @@ import { tokenController } from './controllers/tokenController';
 import { storeSurveyResult } from './controllers/surveyController';
 import { createSurveyDBHandler } from './databaseHandlers/surveyDBHandler';
 import { createOTPDBHandler } from './databaseHandlers/otpDBHandler';
+import { validateOTP } from './controllers/otpController';
 import { ERROR_PAYLOAD_500 } from './constants';
 import { otpRoutes } from './routes/otpRoutes';
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '../../client/public')));
+
 app.disable('x-powered-by');
 
 app.use((req, res, next) => {
@@ -41,10 +43,6 @@ app.get('/', (_, res) => {
   res.sendFile(path.join(__dirname, 'public/home.html'));
 });
 
-app.get('/visit', (_, res) => {
-  res.sendFile(path.join(__dirname, 'public/visit.html'));
-});
-
 app.get('/support', (_, res) => {
   res.sendFile(path.join(__dirname, 'public/support.html'));
 });
@@ -54,6 +52,10 @@ const config = getServerConfig();
 const otpDBHandler = createOTPDBHandler(config);
 if (otpDBHandler) {
   otpDBHandler.init();
+  app.use('/api/otp', validateOTP(otpDBHandler));
+  app.get('/visit', (_, res) => {
+    res.sendFile(path.join(__dirname, 'public/visit.html'));
+  });
 }
 
 const surveyDBHandler = createSurveyDBHandler(config);
@@ -80,7 +82,7 @@ app.use('/api', validateDisplayNameRouter());
 app.use('/api', otpRoutes());
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'public/pageNotFound.html'));
+  res.status(404).sendFile(path.join(__dirname, '../../client/public/pageNotFound.html'));
 });
 
 app.use((err, req, res, next) => {

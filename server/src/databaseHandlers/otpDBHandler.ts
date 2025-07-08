@@ -81,6 +81,11 @@ export default class OTPDBHandler {
       const otpEntry = resources[0];
       const maxAttempts = 5;
 
+      if (otpEntry.used) {
+        console.log(`OTP already used for userId: ${userId}`);
+        return { success: false, error: 'This OTP has already been used.' };
+      }
+
       if (otpEntry.attempts >= maxAttempts) {
         console.log(`OTP validation attempts exceeded for userId: ${userId}`);
 
