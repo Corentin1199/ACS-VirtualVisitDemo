@@ -12,7 +12,9 @@ import { configController } from './controllers/configController';
 import { tokenController } from './controllers/tokenController';
 import { storeSurveyResult } from './controllers/surveyController';
 import { createSurveyDBHandler } from './databaseHandlers/surveyDBHandler';
+import { createOTPDBHandler } from './databaseHandlers/otpDBHandler';
 import { ERROR_PAYLOAD_500 } from './constants';
+import { otpRoutes } from './routes/otpRoutes';
 
 const app = express();
 
@@ -49,6 +51,11 @@ app.get('/support', (_, res) => {
 
 const config = getServerConfig();
 
+const otpDBHandler = createOTPDBHandler(config);
+if (otpDBHandler) {
+  otpDBHandler.init();
+}
+
 const surveyDBHandler = createSurveyDBHandler(config);
 if (surveyDBHandler) {
   surveyDBHandler.init();
@@ -70,6 +77,7 @@ app.get('/api/config', configController(config));
 app.get('/api/token', tokenController(identityClient, config));
 app.use('/api/rooms', roomsRouter(identityClient, roomsClient));
 app.use('/api', validateDisplayNameRouter());
+app.use('/api', otpRoutes());
 
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, 'public/pageNotFound.html'));

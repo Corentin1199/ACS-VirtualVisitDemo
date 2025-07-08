@@ -4,7 +4,7 @@
 // import exp from "constants";
 
 export const VV_COMMUNICATION_SERVICES_CONNECTION_STRING =
-  'endpoint=https://acs-demo-cfr.switzerland.communication.azure.com/;accesskey=62PkEjp9uEZ5yS4p2Ok1JFz1yzxmMjPHvCBtmzCpKRZNaUX9ujEQJQQJ99AKACULyCpvBmkeAAAAAZCSy0gU';
+  'endpoint=https://videoconsulationcss.switzerland.communication.azure.com/;accesskey=FEGLg2ZpwejwmUNkG8ERPiM0CP1mUMjJi1bErOOoc691XbTzO626JQQJ99BFACULyCpXItdPAAAAAZCSQuCF';
 export const VV_MICROSOFT_BOOKINGS_URL_ENV_NAME =
   'https://microsoftbookings.azurewebsites.net/?organization=financialservices&UICulture=en-US';
 export const VV_CHAT_ENABLED_ENV_NAME = 'true';
@@ -19,8 +19,8 @@ export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TYPE_ENV_NAME = 'rating';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_ANSWER_PLACEHOLDER_ENV_NAME = '';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_SAVE_BUTTON_TEXT_ENV_NAME = 'Continue';
 export const VV_COSMOS_DB_CONNECTION_STRING =
-  'AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/';
-export const VV_COSMOS_DB_NAME = 'Consultation feedback database';
+  'AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=K5l8Qn2Z0eC4SjDbrFlUu2qysjR3XkDXTYOWpfKJOn6a7GnfkarwIYO7BQLO83jA2DHJfhelkcheACDb2tSSXw==;';
+export const VV_COSMOS_DB_NAME = 'db-account-gianmdd4a3s6c';
 
 export const ERROR_NO_USER_FOUND_IN_ROOM = 'The user is not a participant of the room';
 

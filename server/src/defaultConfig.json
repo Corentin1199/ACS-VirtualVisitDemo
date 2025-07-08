@@ -1,5 +1,5 @@
 {
-  "communicationServicesConnectionString": "endpoint=https://acs-demo-cfr.switzerland.communication.azure.com/;accesskey=62PkEjp9uEZ5yS4p2Ok1JFz1yzxmMjPHvCBtmzCpKRZNaUX9ujEQJQQJ99AKACULyCpvBmkeAAAAAZCSy0gU",
+  "communicationServicesConnectionString": "endpoint=https://videoconsulationcss.switzerland.communication.azure.com/;accesskey=FEGLg2ZpwejwmUNkG8ERPiM0CP1mUMjJi1bErOOoc691XbTzO626JQQJ99BFACULyCpXItdPAAAAAZCSQuCF",
   "microsoftBookingsUrl": "https://microsoftbookings.azurewebsites.net/?organization=financialservices&UICulture=en-US",
   "chatEnabled": true,
   "screenShareEnabled": true,
@@ -17,7 +17,7 @@
     }
   },
   "cosmosDb": {
-    "connectionString": "AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=YT28bgUqXnpxfjoCd0j1sHno0qAZRS5TDMlRsOFbKyoeSwM365yV7RsQJZy9NYh3IjxJGqxA16xmACDbJERWJA==;",
-    "dbName": "cosmos-db-gianmdd4a3s6c"
+    "connectionString": "AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=K5l8Qn2Z0eC4SjDbrFlUu2qysjR3XkDXTYOWpfKJOn6a7GnfkarwIYO7BQLO83jA2DHJfhelkcheACDb2tSSXw==;",
+    "dbName": "db-account-gianmdd4a3s6c"
   }
 }

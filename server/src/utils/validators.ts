@@ -5,6 +5,14 @@ import { SurveyResultRequest } from '../models/surveyModel';
 import { JoinRoomRequest } from '../models/roomModel';
 import { forbiddenWords } from './forbiddenWords'; // Import the forbidden words list
 
+export const otpRequestValidator = (requestData: { email?: string }): string[] => {
+  const { email } = requestData;
+  const errors: string[] = [];
+
+  if (!email && typeof email !== 'string') errors.push('Email is required');
+
+  return errors;
+};
 export const surveyResultRequestValidator = (requestData: SurveyResultRequest): string[] => {
   const { callId, acsUserId, meetingLink, response } = requestData;
   const errors: string[] = [];
