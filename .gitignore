@@ -55,6 +55,7 @@ jspm_packages/
 .env
 constants.ts
 Constants.ts
+defaultConfig.json
 
 # next.js build output
 .next
