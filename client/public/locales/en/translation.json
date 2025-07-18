@@ -12,5 +12,17 @@
   "invalidMeetingLink": "This meeting link is invalid. Verify your meeting link URL.",
   "home": "Home",
   "visit": "Visit",
-  "book": "Book"
+  "book": "Book",
+  "otpValidation": {
+    "title": "Validate Your OTP",
+    "selectLanguage": "Select Language",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Enter your email",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Enter OTP",
+    "validateButton": "Validate OTP",
+    "success": "OTP validated successfully.",
+    "error": "Unable to validate OTP.",
+    "failure": "Failed to validate OTP. Please try again later."
+  }
 }

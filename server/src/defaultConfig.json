@@ -10,14 +10,19 @@
   "logoUrl": "",
   "postCall": {
     "survey": {
-      "type": "msforms",
+      "type": "custom",
       "options": {
-        "surveyUrl": "https://forms.office.com/Pages/ResponsePage.aspx?id=h1tONsfBDUKb7sNdGbVXoaTt33-ufi5JrY0uB9_jKqVURUNUSk41SVpGNzVERUYzTkYzWUkzSzZOUS4u"
+        "surveyUrls": {
+          "en": "https://feedback.css.ch/uc/videoberatung/?a=&b=en_GB",
+          "de": "https://feedback.css.ch/uc/videoberatung/?a=&b=de_DE",
+          "fr": "https://feedback.css.ch/uc/videoberatung/?a=&b=fr_CH",
+          "it": "https://feedback.css.ch/uc/videoberatung/?a=&b=it_CH"
+        }
       }
     }
   },
   "cosmosDb": {
-    "connectionString": "AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=K5l8Qn2Z0eC4SjDbrFlUu2qysjR3XkDXTYOWpfKJOn6a7GnfkarwIYO7BQLO83jA2DHJfhelkcheACDb2tSSXw==;",
+    "connectionString": "AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=RazaEVuAYF86pW7H3tfl9A67SgUvurzf5MnaDD3uonWaoJOuaiholesHMeeO6o1Dzg34aPIEQItFACDbI1BttA==;",
     "dbName": "db-account-gianmdd4a3s6c"
   }
 }

@@ -95,6 +95,7 @@ const RoomsMeetingExperience = (props: RoomsMeetingExperienceProps): JSX.Element
         meetingLink={locator.roomId}
         theme={fluentTheme}
         postCall={postCall}
+        language="en"
         onRejoinCall={async () => {
           await callAdapter.joinCall();
           setRenderPostCall(false);

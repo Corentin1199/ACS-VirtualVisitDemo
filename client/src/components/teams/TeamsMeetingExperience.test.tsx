@@ -43,7 +43,12 @@ const mockPostCall: PostCallConfig = {
   survey: {
     type: 'msforms',
     options: {
-      surveyUrl: 'dummySurveyUrl'
+      surveyUrls: {
+        en: 'dummySurveyUrl',
+        de: 'dummySurveyUrl',
+        fr: 'dummySurveyUrl',
+        it: 'dummySurveyUrl'
+      }
     }
   }
 };

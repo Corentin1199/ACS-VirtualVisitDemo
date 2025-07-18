@@ -26,24 +26,30 @@ export interface SurveyProps {
   callId?: string;
   acsUserId: string;
   meetingLink: string;
+  language: 'en' | 'de' | 'fr' | 'it';
 }
 const SURVEY = 'SurveyComponent';
 
 export const Survey: React.FunctionComponent<SurveyProps> = (props: SurveyProps) => {
   const surveyType = props.postCall.survey?.type;
-  let postcallSurveyUrl = '';
+  let postcallSurveyUrl = {};
   if (surveyType === 'msforms') {
     const options: MSFormsSurveyOptions = props.postCall.survey?.options as MSFormsSurveyOptions;
-    postcallSurveyUrl = options.surveyUrl;
+    postcallSurveyUrl = options.surveyUrls;
   } else if (surveyType === 'custom') {
     const options: CustomSurveyOptions = props.postCall.survey?.options as CustomSurveyOptions;
-    postcallSurveyUrl = options.surveyUrl;
+    postcallSurveyUrl = options.surveyUrls;
   }
-
+  console.log(props);
   if (surveyType === 'msforms' || surveyType === 'custom') {
     return (
       <Stack styles={surveyStyle}>
-        <iframe title={SURVEY} style={surveyIframeStyle} src={postcallSurveyUrl} scrolling="yes"></iframe>
+        <iframe
+          title={SURVEY}
+          style={surveyIframeStyle}
+          src={postcallSurveyUrl[props.language]}
+          scrolling="yes"
+        ></iframe>
         <Stack horizontalAlign="center" verticalAlign="center" styles={rejoinLinkStyle}>
           <RejoinLink onRejoinCall={props.onRejoinCall} />
         </Stack>

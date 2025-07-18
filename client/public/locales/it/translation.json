@@ -12,5 +12,17 @@
   "invalidMeetingLink": "Questo link per la riunione non è valido. Verifica l'URL del tuo link per la riunione.",
   "home": "Pagina principale",
   "visit": "Visita",
-  "book": "Prenotare"
+  "book": "Prenotare",
+  "otpValidation": {
+    "title": "Convalida il tuo OTP",
+    "selectLanguage": "Seleziona la lingua",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Inserisci la tua email",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Inserisci OTP",
+    "validateButton": "Convalida OTP",
+    "success": "OTP convalidato con successo.",
+    "error": "Impossibile convalidare OTP.",
+    "failure": "Convalida OTP fallita. Riprova più tardi."
+  }
 }

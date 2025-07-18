@@ -15,7 +15,12 @@ describe('Survey', () => {
       survey: {
         type: 'msforms',
         options: {
-          surveyUrl: 'dummySurveyUrl'
+          surveyUrls: {
+            en: 'dummySurveyUrl',
+            de: 'dummySurveyUrl',
+            fr: 'dummySurveyUrl',
+            it: 'dummySurveyUrl'
+          }
         }
       }
     };
@@ -25,13 +30,14 @@ describe('Survey', () => {
         acsUserId="mockAcsUserId"
         meetingLink="mockMeetingLink"
         postCall={mockPostCall}
+        language="en"
         onRejoinCall={jest.fn()}
       />
     );
     const iframe = survey.find('iframe');
     const options: MSFormsSurveyOptions = mockPostCall.survey?.options as MSFormsSurveyOptions;
     expect(iframe.length).toBe(1);
-    expect(iframe.props().src).toEqual(options.surveyUrl);
+    expect(iframe.props().src).toEqual(options.surveyUrls['en']);
   });
 
   it('should render PostCallOneQuestionPoll component', async () => {
@@ -53,6 +59,7 @@ describe('Survey', () => {
         acsUserId="mockAcsUserId"
         meetingLink="mockMeetingLink"
         postCall={mockPostCall}
+        language="en"
         onRejoinCall={jest.fn()}
       />
     );

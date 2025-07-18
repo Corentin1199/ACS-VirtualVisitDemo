@@ -5,10 +5,20 @@ import { Theme } from '@fluentui/theme';
 
 export type PostCallSurveyType = 'msforms' | 'custom' | 'onequestionpoll';
 export interface MSFormsSurveyOptions {
-  surveyUrl: string;
+  surveyUrls: {
+    en: string;
+    de: string;
+    fr: string;
+    it: string;
+  };
 }
 export interface CustomSurveyOptions {
-  surveyUrl: string;
+  surveyUrls: {
+    en: string;
+    de: string;
+    fr: string;
+    it: string;
+  };
 }
 
 export type OneQuestionPollType = 'likeOrDislike' | 'rating' | 'text';

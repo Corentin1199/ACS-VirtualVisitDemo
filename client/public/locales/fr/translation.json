@@ -12,5 +12,17 @@
   "invalidMeetingLink": "Ce lien de réunion n'est pas valide. Vérifiez l'URL de votre lien de réunion.",
   "home": "Accueil",
   "visit": "Visite",
-  "book": "Réserve"
+  "book": "Réserve",
+  "otpValidation": {
+    "title": "Validez votre OTP",
+    "selectLanguage": "Choisir la langue",
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Entrez OTP",
+    "validateButton": "Valider OTP",
+    "success": "OTP validé avec succès.",
+    "error": "Impossible de valider OTP.",
+    "failure": "Échec de la validation OTP. Veuillez réessayer plus tard."
+  }
 }

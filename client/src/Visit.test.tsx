@@ -98,7 +98,7 @@ describe('Visit', () => {
     const fetchConfigSpy = jest.spyOn(FetchConfig, 'fetchConfig');
     fetchConfigSpy.mockReturnValue(Promise.resolve(undefined));
 
-    const visit = mount(<Visit />);
+    const visit = mount(<Visit language="en" />);
 
     await runFakeTimers();
 
@@ -119,7 +119,7 @@ describe('Visit', () => {
       }
     );
 
-    const visit = mount(<Visit />);
+    const visit = mount(<Visit language="en" />);
 
     await runFakeTimers();
 
@@ -133,7 +133,7 @@ describe('Visit', () => {
   });
 
   it('should render JoinTeamsMeeting when config is loaded and meeting link is not set', async () => {
-    const visit = mount(<Visit />);
+    const visit = mount(<Visit language="en" />);
 
     await runFakeTimers();
 
@@ -161,7 +161,7 @@ describe('Visit', () => {
           '?meetingURL=https%3A%2F%2Fteams.microsoft.com%2Fl%2Fmeetup-join%2F19%253ameeting_AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA%2540thread.v2%2F0%3Fcontext%3D%257b%2522Tid%2522%253a%252200000000-0000-0000-0000-000000000000%2522%252c%2522Oid%2522%253a%252200000000-0000-0000-0000-000000000000%2522%257d'
       } as TeamsMeetingLinkLocator;
     });
-    const visit = mount(<Visit />);
+    const visit = mount(<Visit language="en" />);
 
     await runFakeTimers();
 
@@ -194,7 +194,7 @@ describe('Visit', () => {
     const getRoomsUserIdSpy = jest.spyOn(GetMeetingLink, 'getRoomsUserId');
     getRoomsUserIdSpy.mockReturnValue('mockParticipantId');
 
-    const visit = mount(<Visit />);
+    const visit = mount(<Visit language="en" />);
 
     await runFakeTimers();
 

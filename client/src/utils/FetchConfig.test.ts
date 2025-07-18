@@ -53,7 +53,7 @@ describe('FetchConfig', () => {
     expect(fetchedConfig?.postCall?.survey).toBeDefined();
     expect(fetchedConfig?.postCall?.survey.type).toBe('msforms');
     expect(fetchedConfig?.postCall?.survey.options).toBeDefined();
-    expect(options.surveyUrl).toBe('msFormsSurveyURL');
+    expect(options.surveyUrls).toBe('msFormsSurveyURL');
   });
 
   test('Should return undefined if status code is not 200', async () => {

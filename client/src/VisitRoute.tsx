@@ -11,12 +11,20 @@ initializeIcons();
 
 const App = (): JSX.Element => {
   const [isUnlocked, setIsUnlocked] = useState(false);
+  const [language, setLanguage] = useState<'en' | 'de' | 'fr' | 'it'>('en');
 
   if (!isUnlocked) {
-    return <OTPValidation onSuccess={() => setIsUnlocked(true)} />;
+    return (
+      <OTPValidation
+        onSuccess={(selectedLanguage: 'en' | 'de' | 'fr' | 'it') => {
+          setLanguage(selectedLanguage);
+          setIsUnlocked(true);
+        }}
+      />
+    );
   }
 
-  return <Visit />;
+  return <Visit language={language} />;
 };
 
 ReactDOM.render(

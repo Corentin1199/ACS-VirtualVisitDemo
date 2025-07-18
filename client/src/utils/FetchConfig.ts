@@ -24,6 +24,6 @@ export async function fetchConfig(): Promise<AppConfigModel | undefined> {
     ...config,
     theme: generateTheme(config.colorPalette)
   };
-
+  console.log(appConfigModel.postCall);
   return appConfigModel;
 }

@@ -4,7 +4,7 @@
 import { Stack, Text, ThemeContext, createTheme } from '@fluentui/react';
 import { Theme } from '@fluentui/theme';
 import { headerContainerStyles, headerTextStyles } from './styles/Header.styles';
-import LanguageSwitcher from './components/LanguageSwitcher';
+// import LanguageSwitcher from './components/LanguageSwitcher';
 
 /**
  * @interface HeaderProps The properties that Header uses.
@@ -33,7 +33,7 @@ export const Header = (props: HeaderProps): JSX.Element => {
             <Stack horizontal verticalAlign="center">
               <Text styles={headerTextStyles(theme)}>{companyName}</Text>
             </Stack>
-            <LanguageSwitcher />
+            {/* <LanguageSwitcher /> */}
           </Stack>
         );
       }}

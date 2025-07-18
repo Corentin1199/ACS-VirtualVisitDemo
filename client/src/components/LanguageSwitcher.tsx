@@ -33,7 +33,7 @@ const LanguageSwitcher: React.FC = () => {
       <Text styles={{ root: { color: 'white' } }}>{t('selectLanguage')}</Text>
       <Dropdown
         options={options}
-        defaultSelectedKey={i18n.language}
+        defaultSelectedKey={'en'}
         onChange={changeLanguage}
         styles={{ dropdown: styles.dropdown }}
       />

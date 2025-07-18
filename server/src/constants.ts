@@ -10,16 +10,21 @@ export const VV_MICROSOFT_BOOKINGS_URL_ENV_NAME =
 export const VV_CHAT_ENABLED_ENV_NAME = 'true';
 export const VV_SCREENSHARE_ENABLED_ENV_NAME = 'true';
 export const VV_COMPANY_NAME_ENV_NAME = 'CSS';
-export const VV_POSTCALL_SURVEY_TYPE_ENV_NAME = 'msforms';
-export const VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME =
-  'https://forms.office.com/Pages/ResponsePage.aspx?id=h1tONsfBDUKb7sNdGbVXoaTt33-ufi5JrY0uB9_jKqVURUNUSk41SVpGNzVERUYzTkYzWUkzSzZOUS4u';
+export const VV_POSTCALL_SURVEY_TYPE_ENV_NAME = 'custom';
+export const VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME = 'https://feedback.css.ch/uc/videoberatung/?a=&b=de_DE';
+export const VV_POSTCALL_SURVEY_OPTIONS_SURVEYURLS_ENV_NAME = {
+  en: 'https://feedback.css.ch/uc/videoberatung/?a=&b=en_GB',
+  de: 'https://feedback.css.ch/uc/videoberatung/?a=&b=de_DE',
+  fr: 'https://feedback.css.ch/uc/videoberatung/?a=&b=fr_CH',
+  it: 'https://feedback.css.ch/uc/videoberatung/?a=&b=it_CH'
+};
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TITLE_ENV_NAME = 'Tell us how we did!';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_PROMPT_ENV_NAME = 'How satisfied were you with your visit?';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TYPE_ENV_NAME = 'rating';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_ANSWER_PLACEHOLDER_ENV_NAME = '';
 export const VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_SAVE_BUTTON_TEXT_ENV_NAME = 'Continue';
 export const VV_COSMOS_DB_CONNECTION_STRING =
-  'AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=K5l8Qn2Z0eC4SjDbrFlUu2qysjR3XkDXTYOWpfKJOn6a7GnfkarwIYO7BQLO83jA2DHJfhelkcheACDb2tSSXw==;';
+  'AccountEndpoint=https://db-account-gianmdd4a3s6c.documents.azure.com:443/;AccountKey=RazaEVuAYF86pW7H3tfl9A67SgUvurzf5MnaDD3uonWaoJOuaiholesHMeeO6o1Dzg34aPIEQItFACDbI1BttA==;';
 export const VV_COSMOS_DB_NAME = 'db-account-gianmdd4a3s6c';
 
 export const ERROR_NO_USER_FOUND_IN_ROOM = 'The user is not a participant of the room';

@@ -18,7 +18,8 @@ import './i18n';
 
 const PARENT_ID = 'VisitSection';
 
-export const Visit = (): JSX.Element => {
+export const Visit = ({ language }: { language: 'en' | 'de' | 'fr' | 'it' }): JSX.Element => {
+  console.log('Selected Language:', language);
   const _getTeamsMeetingLinkLocator = (meetingLink: string): TeamsMeetingLinkLocator | undefined => {
     let teamsMeetingLinkModel: TeamsMeetingLinkLocator | undefined = undefined;
 

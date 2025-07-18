@@ -105,7 +105,7 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 10000); // Change image every 3 seconds
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
@@ -244,6 +244,7 @@ export const TeamsMeetingExperience = (props: TeamsMeetingExperienceProps): JSX.
             meetingLink={locator.meetingLink}
             theme={fluentTheme}
             postCall={postCall}
+            language={language}
             onRejoinCall={async () => {
               await callWithChatAdapter.joinCall();
               setRenderPostCall(false);

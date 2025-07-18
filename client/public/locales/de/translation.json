@@ -12,5 +12,17 @@
   "invalidMeetingLink": "Dieser Meeting-Link ist ungültig. Überprüfen Sie Ihre Meeting-Link-URL.",
   "home": "Startseite",
   "visit": "Besuchen",
-  "book": "Buchen"
+  "book": "Buchen",
+  "otpValidation": {
+    "title": "Überprüfen Sie Ihr OTP",
+    "selectLanguage": "Sprache auswählen",
+    "emailLabel": "E-Mail",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail ein",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Geben Sie OTP ein",
+    "validateButton": "OTP überprüfen",
+    "success": "OTP erfolgreich überprüft.",
+    "error": "OTP konnte nicht überprüft werden.",
+    "failure": "OTP-Überprüfung fehlgeschlagen. Bitte versuchen Sie es später erneut."
+  }
 }

@@ -3,7 +3,7 @@
 
 import {
   VV_POSTCALL_SURVEY_TYPE_ENV_NAME,
-  VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME,
+  VV_POSTCALL_SURVEY_OPTIONS_SURVEYURLS_ENV_NAME,
   VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_PROMPT_ENV_NAME,
   VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TYPE_ENV_NAME,
   VV_POSTCALL_SURVEY_ONEQUESTIONPOLL_TITLE_ENV_NAME,
@@ -61,14 +61,14 @@ const isValidPostCallSurveyType = (postcallSurveyType: string): postcallSurveyTy
 
 const getMSFormsOptions = (defaultConfig: ServerConfigModel): MSFormsSurveyOptions => {
   const options: MSFormsSurveyOptions = defaultConfig.postCall?.survey?.options as MSFormsSurveyOptions;
-  const postcallSurveyUrl = process.env[VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME] ?? options.surveyUrl;
-  return { surveyUrl: postcallSurveyUrl };
+  const postcallSurveyUrl = VV_POSTCALL_SURVEY_OPTIONS_SURVEYURLS_ENV_NAME ?? options.surveyUrls;
+  return { surveyUrls: postcallSurveyUrl };
 };
 
 const getCustomSurveyOptions = (defaultConfig: ServerConfigModel): CustomSurveyOptions => {
   const options: CustomSurveyOptions = defaultConfig.postCall?.survey?.options as CustomSurveyOptions;
-  const postcallSurveyUrl = process.env[VV_POSTCALL_SURVEY_OPTIONS_SURVEYURL_ENV_NAME] ?? options.surveyUrl;
-  return { surveyUrl: postcallSurveyUrl };
+  const postcallSurveyUrl = VV_POSTCALL_SURVEY_OPTIONS_SURVEYURLS_ENV_NAME ?? options.surveyUrls;
+  return { surveyUrls: postcallSurveyUrl };
 };
 
 const getOneQuestionPollOptions = (defaultConfig: ServerConfigModel): OneQuestionPollOptions => {
